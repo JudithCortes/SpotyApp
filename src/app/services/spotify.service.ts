@@ -26,4 +26,12 @@ export class SpotifyService {
 //})
 
   }
+
+getArtista( termino:string){
+  const headers = new HttpsHeaders({
+    'Authorization': 'Bearer BQATd4sDYKNVDlKizpHo7Pxso70Iu4XgBvlvMbhgiJJEraO4ICSZQeebd0h6F_9AJF9Myd-oUGX9aLE-8r4'
+  });
+  return this.http.get(`https://api.spotify.com/v1/search?q=${ termino }&type=artist&limit=15`);
+}
+
 }
