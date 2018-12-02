@@ -7,6 +7,7 @@ import { map } from 'rxjs/operators';
   //forma automatica de importar servicios para no hacerlo manualmente en app.modules.ts
   providedIn: 'root'
 })
+
 export class SpotifyService {
 
   constructor(private http: HttpClient) {
@@ -20,7 +21,7 @@ export class SpotifyService {
 
     //especificar los headers
     const headers = new HttpHeaders({
-      'Authorization': 'Bearer BQD_kwGgyAjy6mDtw_zkbhhnyVSKu_8A5WxjIXghozAC2tgEMtl5cdp6tJbUmUcGl0eAiQ2mYTOdBbWzxC8'
+      'Authorization': 'Bearer BQAaEL8VoZ94FMepeUH_QJ5wgr87Eik3Ovh_w_Rw2PhS9mGFjLKG4RGqoU65xUBEdq-X8XaNnMu5EG1B_mk'
     });
     return this.http.get(url, {headers});
 
@@ -28,23 +29,17 @@ export class SpotifyService {
 
   //hacer una peticion a API, crear un servicio
   getNewReleases(){
-
     //hacer la peticion hhtp.get con el url de spotify
     //con map se filtra la informacion recibida
     return this.getQuery('browse/new-releases?limit=20')
     .pipe( map( data =>data['albums'].items));
   }
 
-getArtistas ( termino:string){
+getArtistas ( termino:string) {
 
   return this.getQuery(`search?q=${ termino }&type=artist&limit=15`)
    .pipe(map(data => data['artists'].items));
-}
-
-getArtista ( id: string){
-
-  return this.getQuery(`artists/${ id }`);
-   //.pipe(map(data => data['artists'].items));
+   
 }
 
 getArtista ( id: string){

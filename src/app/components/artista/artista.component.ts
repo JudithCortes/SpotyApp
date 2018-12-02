@@ -20,8 +20,10 @@ export class ArtistaComponent  {
     this.loadingArtist = true;
 
     this.router.params.subscribe(params =>{
+
       this.getArtista(params['id']);
       this.getTopTracks( params['id'] );
+
     });
 
    }
@@ -30,8 +32,8 @@ export class ArtistaComponent  {
 
     this.loadingArtist = true;
 
-    this.spotify.getArtista(id)
-      .subscribe(artista => {
+    this.spotify.getArtista( id )
+      .subscribe( artista => {
         console.log(artista);
         this.artista = artista;
 

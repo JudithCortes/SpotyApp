@@ -3,14 +3,14 @@
 
 <div class="row animated fadeIn" *ngIf="!loadingArtist">
     <div class="col-2">
-        <img [src]="artista.images | noimage" class="img-thumbnail img-circle">
+      <img [src]="artista.images | noimage" class="img-thumbnail img-circle">
     </div>
 
     <div class="col">
         <h3>{{ artista.name }}</h3>
         <p>
-            <a [href]="artista.external_urls.spotify" target="_blank">
-          Ir a la página del artista
+          <a [href]="artista.external_urls.spotify" target="_blank">
+            Ir a la página del artista
         </a>
         </p>
 
@@ -42,7 +42,7 @@
             <tbody>
                 <tr *ngFor="let track of topTracks">
                     <td>
-                        <img [src]="track.album.images | noimage" class="img-thumb">
+                      <img [src]="track.album.images | noimage" class="img-thumb">
                     </td>
                     <td>{{ track.album.name }}</td>
                     <td>{{ track.name }}</td>

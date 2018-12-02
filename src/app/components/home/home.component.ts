@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { SpotifyService } from 'src/app/services/spotify.service';
+import { SpotifyService } from '../../services/spotify.service';
 
 @Component({
   selector: 'app-home',
@@ -13,21 +13,29 @@ export class HomeComponent {
 nuevasCanciones: any[] = [];
 
 //creamos una nueva propiedad loading
-loading:boolean;
+loading: boolean;
 
+error: boolean;
+mensajeError: string;
 
   constructor( private spotify: SpotifyService) { 
 
-    //inicializamos la propiedad loading:
+    //inicializamos la propiedad loading y error:
 this.loading = true;
-
+this.error = false;
     //cuando se inicialice el homeComponent se llama la funcon
     //getreleases de spotify
     this.spotify.getNewReleases()
-    .subscribe((data:any )=> {
-      console.log(data);
+    .subscribe((data: any ) => {
+      //console.log(data);
       this.nuevasCanciones = data;
       this.loading = false;
+    },( errorServicio ) => {
+
+      this.loading = false;
+      this.error = true;
+      console.log(errorServicio);
+      this.mensajeError = errorServicio.error.error.message; 
     });
   }
 
