@@ -13,11 +13,11 @@ export class SearchComponent {
 
   constructor(private spotify: SpotifyService) { }
 
-buscar(termino:string){
+buscar(termino: string){
   console.log(termino);
 
   this.loading = true;
-  this.spotify.getArtista( termino )
+  this.spotify.getArtistas( termino )
       .subscribe((data:any) => {
         console.log(data);
         this.artistas = data;
